@@ -1,4 +1,4 @@
-function UserTable({users}) {
+function UserTable({users, setIsEdit, setSelectUser, deleteUser}) {
     return(
         <div>
             {
@@ -6,10 +6,13 @@ function UserTable({users}) {
                     return(
                         <h1>
                             {user.id}. {user.name} 
-                            <button>
+                            <button onClick={() => {
+                                setSelectUser({id: user.id, name: user.name});
+                                setIsEdit(true);
+                            }}>
                                 Update
                             </button>
-                            <button>
+                            <button onClick={() => deleteUser({id: user.id, name: user.name})}>
                                 Delete
                             </button>
                         </h1>
